@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse("Django Blogger pages")
+    return render(request, 'blog/index.html')
