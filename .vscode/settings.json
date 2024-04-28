@@ -1,9 +1,13 @@
 {
 
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "python.formtting.provider":"back",
     "python.formatting.blackArgs":[
         "--line-length",
         "88"
+    ],
+    "json.schemas": [
+
+
     ],
 }
