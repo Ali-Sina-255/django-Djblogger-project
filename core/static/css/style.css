@@ -16,3 +16,19 @@ html, body{
 .fw-500{
     font-weight: 500px !important;
 }
+
+.infinite-scroll {
+    font-size: 22px;
+    letter-spacing: -0.6px;
+}
+
+@media only screen and(max-width:668px){
+    .infinite-scroll {
+        font-size: 0.9375rem;
+        letter-spacing: -0.0px;
+    }
+    .infinite-author,
+    .infinite-data{
+        font-size: 0.8125rem;
+    }
+}
