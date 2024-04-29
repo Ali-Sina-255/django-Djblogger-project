@@ -1,9 +1,8 @@
 from django.contrib.auth.models import User
 import factory
 from . models import Post
-from factory.faker import faker
+from factory.faker import Faker
 
-FAKE = faker.Faker()
 class PostFactory(factory.Factory):
     class Meta:
         model = Post

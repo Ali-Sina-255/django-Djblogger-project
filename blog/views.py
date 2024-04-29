@@ -6,8 +6,13 @@ from django.http import HttpResponse
 
 class HomeView(ListView):
     model = Post
-    template_name = 'blog/index.html'
     context_object_name = 'posts'
+    paginate_by = 6
+    
+    def get_template_names(self):
+        if self.request.htmx:
+            return "components/post-list-element.html"
+        return 'blog/index.html'
     
 def home(request):
     return render(request, 'blog/index.html')
