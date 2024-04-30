@@ -1,9 +1,11 @@
 from django.contrib.auth.models import User
 import factory
 from . models import Post
-from factory.faker import Faker
+from factory.faker import faker
 
-class PostFactory(factory.Factory):
+FAKE = faker.Faker()
+
+class PostFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Post
     title = factory.Faker("sentence",nb_words=12)
@@ -17,3 +19,12 @@ class PostFactory(factory.Factory):
             x += "\n" + FAKE.paragraph(nb_sentences=30) + "\n"
         return x
     status = 'Published'
+    
+    @factory.post_generation
+    def tags(self, create, extracted, **kwargs):
+        if not create:
+            return
+        if extracted:
+            self.tags.add(extracted)
+        else:
+            self.tags.add('python', 'django','database','javascript','react','htmx','pytest','vscode','full-stack','ORM','front-end','back-end')        

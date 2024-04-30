@@ -5,10 +5,13 @@
 <div class="container pt-5">
     <div class="row">
         <div class="col-12 col-lg-8 ">
-
            {% include 'components/post-list-element.html' %}
         </div>
-        <div class="d-none d-lg-block col-4">b</div>
+        
+
+    </div>
+    <div class="d-blog d-lg-block col-4">
+       {% sidebar_tag_cloud %}
     </div>
 </div>
 {% endblock %}
