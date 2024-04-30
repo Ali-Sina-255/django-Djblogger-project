@@ -1,0 +1,24 @@
+{% extends '../base/base.html' %}
+
+{% block content %}
+<style>
+    @media only screen and (max-width:992px) {
+        .col-navbar{
+            flex: 0 0 80px;
+            display: flex;
+            justify-content: center;
+            border-right:1px solid #dee2e6 ;
+            height: 100vh;
+        }
+        
+    }
+</style>
+<div class="container" style="max-width: 1500px !important;">
+    <div class="row">
+        <div class="col-navbar">{% block content-lent %}{%endblock %}</div>
+        <div class="col-12 col-lg-8">{% block content-mid %}{%endblock %}</div>
+        <div class="d-none d-lg-block col-lg-3">{% block content-right %}{%endblock %}</div>
+    </div>
+</div>
+
+{% endblock %}

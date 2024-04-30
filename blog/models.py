@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from taggit.managers import TaggableManager
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -28,3 +29,6 @@ class Post(models.Model):
         return self.title
 
     tags = TaggableManager()
+    
+    def get_absolute_url(self):
+        return reverse('single_page', args=[self.slug])
