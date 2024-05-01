@@ -21,9 +21,11 @@ def home(request):
 def single_post_page(request, slug):
     try:
         post = Post.objects.get(slug=slug, status="Published")
+        related = Post.objects.filter(author = post.author)[:5]
     except Post.DoesNotExist:
         return HttpResponse(f'post with is slug {slug} is not found!')
     context = {
-        "post":post
+        "post":post,
+        "related": related
     }
     return render(request, 'blog/single_Post.html', context)
