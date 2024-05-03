@@ -4,6 +4,7 @@
 {% include 'includes/secondary-navbar.html' %}
 {%endblock %}
 
+
 {% block content-mid %}
 <div class="center mx-auto" style="max-width: 683px;">
 <h1 class="fs-1 fw-bold pb-5">{{tag|title}}</h1>
@@ -14,9 +15,24 @@
 {%endblock %}
 
 {% block content-right %}
+<style>
+    @media only screen and (min-width:992px) {
+        .col-navbars{
+            flex: 0 0 80px;
+            display: flex;
+            justify-content: center;
+            border-left:2px solid #dee2e6 ;
+            height: 100vh;
+        }
+        
+    }
+</style>
 
+   <div class="col-navbars p-3">
     {% sidebar_tag_cloud %}
 
-{% include 'includes/footer.html' %}
+   </div>
+
+   {% include 'includes/footer.html' %}
 
 {%endblock %}

@@ -4,7 +4,8 @@ from django.shortcuts import render
 from . models import Post
 from django.views.generic import ListView
 from django.http import HttpResponse
-
+from .forms import PostSearchForm
+from django.db.models import Q
 
 class HomeView(ListView):
     model = Post
@@ -49,3 +50,35 @@ class TagViewList(ListView):
         context['tag'] = self.kwargs['tag']
         return context
         
+        
+class SearchPost(ListView):
+    model  = Post
+    context_object_name = 'posts'
+    paginate_by = 10
+    from_class = PostSearchForm
+    
+    def get_queryset(self):
+        form = self.from_class(self.request.GET)
+        if form.is_valid():
+            return Post.objects.filter(title__icontains=form.cleaned_data['q'])
+        return []
+    def get_template_names(self):
+        if self.request.htmx:
+            return "components/post-list-element-search.html"
+        return 'blog/search.html'
+    
+
+def search_post(request, *args, **kwargs):
+    query = request.GET.get("q")
+    qs = Post.objects.all()
+    if query is not None:
+        lookups = Q(title__icontains=query) | Q(content__icontains=query) | Q(
+            subtitle__icontains=query
+        )
+        qs = Post.objects.filter(lookups)
+    context = {
+        'posts': qs
+    }
+    if request.htmx:
+        return render(request, 'components/post-list-element-search.html')
+    return render(request, 'blog/search.html', context)
