@@ -17,7 +17,13 @@
     <div class="row">
         <div class="col-navbar">{% block content-lent %}{%endblock %}</div>
         <div class="col-12 col-lg-8 pt-5 px-4 px-md-5 ">{% block content-mid %}{%endblock %}</div>
-        <div class="d-none d-lg-block col-lg-3 pt-5">{% block content-right %}{%endblock %}</div>
+        <div class="d-none d-lg-block col-lg-3 pt-5">
+            {% block content-right %}
+            
+{% include 'includes/footer.html' %}
+            {%endblock %}
+        
+        </div>
     </div>
 </div>
 

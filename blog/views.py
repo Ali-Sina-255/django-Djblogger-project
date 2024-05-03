@@ -43,6 +43,7 @@ class TagViewList(ListView):
         if self.request.htmx:
             return "components/post-list-tag.html"
         return 'blog/tags.html'
+    
     def get_context_data(self, **kwargs):
         context = super(TagViewList, self).get_context_data(**kwargs)
         context['tag'] = self.kwargs['tag']

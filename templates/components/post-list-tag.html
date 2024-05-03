@@ -8,21 +8,22 @@
 {% endif %}
     <div class="card border-0 pb-3 pb-sm-5">
         <div class="row">
-            <div class="col-8">
+            <div class="col-9">
                 <div class="card-body p-0">
                     <div class="text-body infinite-author">{{post.author}}</div>
                     <h1 class="mb-1 text-body infinite-title">{{post.title|truncatechars:60}}</h1>
-                    <h2 class="text-muted fs-6 d-none d-sm-block">{{post.content|truncatechars:60}}</h2>
+                    <p class="text-muted fs-6 d-none d-sm-block">{{post.content|truncatechars:60}}</p>
                     <div class="text-muted infinite-data">
                         {{post.updated_at|date:"M d"}} 
                     </div>
                 
                 </div>
             </div>
-            <div class="col-4">
+            <div class="col-3">
               <img src="https://buffer.com/cdn-cgi/image/w=1000,fit=contain,q=90,f=auto/library/content/images/size/w600/2023/10/free-images.jpg" class="img-fluid float-end" alt="">
             </div>
         </div>
+    </div>
     </div>
 </a>
 {% endfor %}
